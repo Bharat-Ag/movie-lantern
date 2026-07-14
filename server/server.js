@@ -16,7 +16,23 @@ const app = express()
 
 await connectDB()
 
-app.use(cors({ origin: process.env.CLIENT_URL || "*", credentials: true }))
+const allowedOrigins = [
+    "http://localhost:3000",
+    "https://movie-lantern.vercel.app"
+]
+
+app.use(
+    cors({
+        origin: (origin, callback) => {
+            if (!origin || allowedOrigins.includes(origin)) {
+                callback(null, true)
+            } else {
+                callback(new Error("Not allowed by CORS"))
+            }
+        },
+        credentials: true,
+    })
+)
 app.use(express.json())
 app.use(cookieParser())
 
