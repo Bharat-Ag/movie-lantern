@@ -13,8 +13,8 @@ function generateToken(userId) {
 function setAuthCookie(res, token) {
     res.cookie("token", token, {
         httpOnly: true,
-        secure: process.env.NODE_ENV === "production",
-        sameSite: "lax",
+        secure: true,
+        sameSite: "none",
         maxAge: COOKIE_MAX_AGE_MS,
     })
 }
