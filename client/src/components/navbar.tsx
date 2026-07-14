@@ -12,7 +12,6 @@ const NAV_LINKS = [
   { label: "Home", href: "/" },
   { label: "Movies", href: "/movies" },
   { label: "My Bookings", href: "/bookings" },
-  { label: "Offers", href: "/offers" },
 ];
 
 export function Navbar() {
